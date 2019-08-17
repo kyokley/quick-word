@@ -5,9 +5,7 @@ from setuptools import setup
 from setuptools.command.test import test as TestCommand
 
 
-REQUIRES = [
-    'docopt',
-]
+REQUIRES = ['docopt']
 
 
 class PyTest(TestCommand):
@@ -18,6 +16,7 @@ class PyTest(TestCommand):
 
     def run_tests(self):
         import pytest
+
         errcode = pytest.main(self.test_args)
         sys.exit(errcode)
 
@@ -39,7 +38,7 @@ def find_version(fname):
     return version
 
 
-__version__ = find_version("quick_word/main.py")
+__version__ = find_version("src/quick_word/main.py")
 
 
 def read(fname):
@@ -50,7 +49,7 @@ def read(fname):
 
 setup(
     name='quick_word',
-    version="0.1.0",
+    version=__version__,
     description='Generate a random list of words',
     long_description=read("README.rst"),
     author='Kevin Yokley',
@@ -68,12 +67,9 @@ setup(
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 3',
     ],
-    py_modules=["quick_word"],
-    entry_points={
-        'console_scripts': [
-            "quick_word = quick_word.main:main"
-        ]
-    },
+    package_dir={'': 'src'},
+    packages=['quick_word'],
+    entry_points={'console_scripts': ["quick_word = quick_word.main:main"]},
     tests_require=['pytest'],
-    cmdclass={'test': PyTest}
+    cmdclass={'test': PyTest},
 )
