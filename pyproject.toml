@@ -6,13 +6,11 @@ authors = ["Kevin Yokley <kyokley2@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.10"
 docopt = "^0.6.2"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.1"
-invoke = "=0.14.0"
-tox = "^3.13"
+pytest = "^7.2"
 bpython = "^0.18.0"
 
 [build-system]
