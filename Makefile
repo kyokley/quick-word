@@ -1,10 +1,7 @@
-.PHONY: build build-dev publish
+.PHONY: build publish shell
 
 build:
 	docker build -t kyokley/quick-word .
-
-build-dev:
-	docker build --build-arg REQS= -t kyokley/quick-word .
 
 shell: build-dev
 	docker run --rm -it --entrypoint /bin/bash kyokley/quick-word
