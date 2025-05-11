@@ -1,8 +1,6 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import argparse
 import sys
-from .words import get_word
+from src.quick_word.words import get_word
 
 __version__ = "0.1.0"
 __author__ = "Kevin Yokley"
@@ -14,7 +12,7 @@ parser = argparse.ArgumentParser(
         description='Dump list of random dictionary words',
         )
 parser.add_argument('--version', action='store_true')
-parser.add_argument('word_count', description='Number of words to generate')
+parser.add_argument('word_count', help='Number of words to generate')
 
 args = parser.parse_args()
 

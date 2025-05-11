@@ -2,7 +2,10 @@
 
 {
   # https://devenv.sh/basics/
-  env.GREET = "quick-work";
+  env = {
+    GREET = "quick-work";
+    PYTHONPATH = ".";
+  };
 
   # https://devenv.sh/packages/
   packages = [];
@@ -24,9 +27,28 @@
   # services.postgres.enable = true;
 
   # https://devenv.sh/scripts/
-  scripts.hello.exec = ''
-    echo Welcome to  $GREET
-  '';
+  scripts = {
+    hello.exec = ''
+      echo Welcome to  $GREET
+    '';
+    build.exec = ''
+      docker build -t kyokley/quick-word .
+    '';
+    build-dev.exec = ''
+      docker build -t kyokley/quick-word --target=dev .
+    '';
+    shell.exec = ''
+      build-dev
+      docker run --rm -it --entrypoint bash kyokley/quick-word
+    '';
+    publish.exec = ''
+      build
+      docker push kyokley/quick-word
+    '';
+    tests.exec = ''
+      docker run --rm -t --entrypoint uv -v $(pwd):/code kyokley/quick-word run pytest
+    '';
+  };
 
   enterShell = ''
     hello
