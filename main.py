@@ -8,20 +8,20 @@ __license__ = "MIT"
 
 
 parser = argparse.ArgumentParser(
-        prog='quick-word',
-        description='Dump list of random dictionary words',
-        )
-parser.add_argument('--version', action='store_true')
-parser.add_argument('word_count', help='Number of words to generate')
+    prog="quick-word",
+    description="Dump list of random dictionary words",
+)
+parser.add_argument("--version", action="store_true")
+parser.add_argument("word_count", help="Number of words to generate")
 
 args = parser.parse_args()
 
 
 def main():
-    '''Main entry point for the quick_word CLI.'''
+    """Main entry point for the quick_word CLI."""
     version = args.version
     if version:
-        print(f' quick-word {__version__}')
+        print(f" quick-word {__version__}")
         return
 
     try:
@@ -29,8 +29,8 @@ def main():
     except ValueError:
         print(f"Expected an int. Got '{args.word_count}'")
         sys.exit(1)
-    print('\n'.join(get_word() for i in range(word_count)))
+    print("\n".join(get_word() for i in range(word_count)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
