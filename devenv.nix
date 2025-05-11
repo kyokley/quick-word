@@ -63,10 +63,14 @@
   # https://devenv.sh/tests/
   enterTest = ''
     echo "Running tests"
+    tests
   '';
 
   # https://devenv.sh/git-hooks/
-  # git-hooks.hooks.shellcheck.enable = true;
+  git-hooks.hooks = {
+    ruff.enable = true;
+    ruff-format.enable = true;
+  };
 
   # See full reference at https://devenv.sh/reference/options/
 }
