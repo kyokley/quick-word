@@ -13,7 +13,7 @@ COPY pyproject.toml uv.lock /code/
 
 RUN uv sync --frozen --no-dev
 
-ENTRYPOINT ["quick_word"]
+ENTRYPOINT ["uv", "run", "python", "main.py"]
 
 FROM base AS dev
 RUN uv sync --frozen
