@@ -5,7 +5,7 @@ from setuptools import setup
 from setuptools.command.test import test as TestCommand
 
 
-REQUIRES = ['docopt']
+REQUIRES = ["docopt"]
 
 
 class PyTest(TestCommand):
@@ -22,11 +22,11 @@ class PyTest(TestCommand):
 
 
 def find_version(fname):
-    '''Attempts to find the version number in the file names fname.
+    """Attempts to find the version number in the file names fname.
     Raises RuntimeError if not found.
-    '''
-    version = ''
-    with open(fname, 'r') as fp:
+    """
+    version = ""
+    with open(fname, "r") as fp:
         reg = re.compile(r'__version__ = [\'"]([^\'"]*)[\'"]')
         for line in fp:
             m = reg.match(line)
@@ -34,7 +34,7 @@ def find_version(fname):
                 version = m.group(1)
                 break
     if not version:
-        raise RuntimeError('Cannot find version information')
+        raise RuntimeError("Cannot find version information")
     return version
 
 
@@ -48,27 +48,27 @@ def read(fname):
 
 
 setup(
-    name='quick_word',
+    name="quick_word",
     version=__version__,
-    description='Generate a random list of words',
+    description="Generate a random list of words",
     long_description=read("README.rst"),
-    author='Kevin Yokley',
-    author_email='kyokley2@gmail.com',
-    url='https://github.com/kyokley/quick_word',
+    author="Kevin Yokley",
+    author_email="kyokley2@gmail.com",
+    url="https://github.com/kyokley/quick_word",
     install_requires=REQUIRES,
     license=read("LICENSE"),
     zip_safe=False,
-    keywords='quick_word',
+    keywords="quick_word",
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Natural Language :: English',
-        'Programming Language :: Python :: 3',
+        "Development Status :: 2 - Pre-Alpha",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Programming Language :: Python :: 3",
     ],
-    package_dir={'': 'src'},
-    packages=['quick_word'],
-    entry_points={'console_scripts': ["quick_word = quick_word.main:main"]},
-    tests_require=['pytest'],
-    cmdclass={'test': PyTest},
+    package_dir={"": "src"},
+    packages=["quick_word"],
+    entry_points={"console_scripts": ["quick_word = quick_word.main:main"]},
+    tests_require=["pytest"],
+    cmdclass={"test": PyTest},
 )
