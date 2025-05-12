@@ -46,6 +46,7 @@
       docker push kyokley/quick-word
     '';
     tests.exec = ''
+      build-dev
       docker run --rm -t --entrypoint uv -v $(pwd):/code kyokley/quick-word run pytest
     '';
   };
