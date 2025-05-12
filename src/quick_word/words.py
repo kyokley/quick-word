@@ -7779,4 +7779,10 @@ wordlist = [
 
 
 def get_word():
-    return rand.choice(wordlist)
+    while True:
+        yield rand.choice(wordlist)
+
+
+def words(word_count):
+    word_gen = get_word()
+    return (next(word_gen) for i in range(word_count))

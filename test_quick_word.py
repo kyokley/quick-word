@@ -1,14 +1,11 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-from subprocess import check_output
+from src.quick_word.words import wordlist, words
 
 
-def test_echo():
-    """An example test."""
-    result = run_cmd("echo hello world")
-    assert result == "hello world\n"
+def test_words():
+    test_num_words = 3
+    output_words = words(test_num_words)
+    split_words = list(output_words)
 
-
-def run_cmd(cmd):
-    """Run a shell command `cmd` and return its output."""
-    return check_output(cmd, shell=True).decode("utf-8")
+    assert len(split_words) == test_num_words
+    for word in split_words:
+        assert word in wordlist

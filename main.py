@@ -1,6 +1,6 @@
 import argparse
 import sys
-from src.quick_word.words import get_word
+from src.quick_word.words import words
 
 __version__ = "0.1.0"
 __author__ = "Kevin Yokley"
@@ -29,7 +29,8 @@ def main():
     except ValueError:
         print(f"Expected an int. Got '{args.word_count}'")
         sys.exit(1)
-    print("\n".join(get_word() for i in range(word_count)))
+
+    print("\n".join(words(word_count)))
 
 
 if __name__ == "__main__":
