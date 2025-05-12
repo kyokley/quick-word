@@ -12,7 +12,9 @@ parser = argparse.ArgumentParser(
     description="Dump list of random dictionary words",
 )
 parser.add_argument("--version", action="store_true")
-parser.add_argument("word_count", help="Number of words to generate")
+parser.add_argument(
+    "word_count", nargs="?", help="Number of words to generate", type=int, default=0
+)
 
 args = parser.parse_args()
 

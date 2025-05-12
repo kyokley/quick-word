@@ -49,7 +49,7 @@
       build-dev
       docker run --rm -t --entrypoint uv -v $(pwd):/code kyokley/quick-word run pytest
     '';
-    qw.exec = ''
+    quick-word.exec = ''
       build
       docker run --rm -t kyokley/quick-word "$@"
     '';
